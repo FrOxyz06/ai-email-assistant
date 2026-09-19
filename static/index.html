@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#111318">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Mohamed AI">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="apple-touch-icon" href="/static/icons/icon-192.png">
+  <link rel="stylesheet" href="/static/style.css">
+  <title>Mohamed AI</title>
+</head>
+<body>
+  <main class="app">
+    <header>
+      <div>
+        <p class="eyebrow">DEMO · SAMPLE DATA</p>
+        <h1>Good <span id="daypart">day</span>, Mohamed.</h1>
+      </div>
+      <button id="refresh" class="icon-button" aria-label="Refresh">↻</button>
+    </header>
+
+    <section class="hero-card">
+      <div>
+        <p class="muted">Needs attention</p>
+        <div class="big-number" id="highCount">0</div>
+        <p id="attentionText">Checking your priorities…</p>
+      </div>
+      <div class="pulse"></div>
+    </section>
+
+    <nav class="tabs">
+      <button class="tab active" data-view="today">Today</button>
+      <button class="tab" data-view="inbox">Inbox</button>
+      <button class="tab" data-view="calendar">Calendar</button>
+      <button class="tab" data-view="connections">Connect</button>
+    </nav>
+
+    <section id="today" class="view active">
+      <div class="section-title">
+        <h2>Priority inbox</h2>
+        <span id="inboxCount"></span>
+      </div>
+      <div id="priorityList" class="stack"></div>
+
+      <div class="section-title">
+        <h2>Coming up</h2>
+      </div>
+      <div id="todayEvents" class="stack"></div>
+    </section>
+
+    <section id="inbox" class="view">
+      <div class="section-title"><h2>All messages</h2></div>
+      <div id="allEmails" class="stack"></div>
+    </section>
+
+    <section id="calendar" class="view">
+      <div class="section-title"><h2>Calendar</h2></div>
+      <div id="allEvents" class="stack"></div>
+    </section>
+
+    <section id="connections" class="view">
+      <div class="section-title"><h2>Connections</h2></div>
+      <p class="muted connection-note">The app does not ask for your email password. Gmail, Outlook, calendar sync, and AI are not connected in this demo.</p>
+      <div id="connectionList" class="stack"></div>
+      <button id="demoButton" class="primary">Load demo data</button>
+    </section>
+  </main>
+
+  <div id="toast" class="toast"></div>
+  <script src="/static/app.js"></script>
+</body>
+</html>
