@@ -6,7 +6,7 @@ A small phone-friendly inbox demo built with FastAPI and plain JavaScript. It so
 
 ## Run
 
-Requires Python 3.10+.
+Requires Python 3.12 or 3.13 (the versions checked in CI).
 
 ```sh
 python -m venv .venv
@@ -36,3 +36,26 @@ Tests cover priority classification, text previews, dashboard ordering, sample d
 - The service worker caches the interface, not email or calendar responses. Inbox data still needs the local server.
 - There is no login or multi-user support. Keep this demo on localhost.
 - Next step: add one read-only email provider with OAuth and let users correct priorities.
+
+## Project layout
+
+- `app.py`: API, demo data, and local persistence.
+- `static/`: interface, styles, icons, and service worker.
+- `test_app.py`: API and interface-route regression tests.
+- `requirements*.in`: allowed direct dependencies.
+- `requirements*.txt`: exact dependency versions for repeatable installs.
+- `data/`: local state, excluded from Git.
+
+## Maintenance
+
+GitHub Actions runs the existing tests on Python 3.12 and 3.13. Dependabot checks Python dependencies and workflow actions weekly.
+
+To regenerate the locks in a Python 3.12 environment:
+
+```sh
+python -m pip install pip-tools
+pip-compile --upgrade requirements.in
+pip-compile --upgrade --constraint requirements.txt requirements-dev.in
+python -m pip install -r requirements-dev.txt
+python -m unittest -v
+```
